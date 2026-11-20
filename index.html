@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曜森國際企業社 | YAOSEN INTERNATIONAL - 草本植萃原物料</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Noto Sans TC 與 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 設定品牌專屬色票與字體（將主色調整為天然草綠色系） -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#2D5A27',
+                            light: '#3D7535',
+                            dark: '#1B3B17'
+                        },
+                        gold: {
+                            DEFAULT: '#C5A059',
+                            light: '#D9BC82',
+                            dark: '#A6823E',
+                            bg: '#FBF8F1'
+                        },
+                        ivory: '#F9F8F6'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自訂捲軸與細微過渡效果 */
+        body {
+            background-color: #F9F8F6;
+            color: #1E293B;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(45, 90, 39, 0.16);
+            border-color: #C5A059;
+        }
+        /* 彈窗淡入動畫 */
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-animate {
+            animation: modalFadeIn 0.25s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-gold selection:text-white">
+
+    <!-- 頂部導覽列 (Header) -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- LOGO 與公司名稱 -->
+            <a href="#" class="flex items-center gap-3.5 group focus:outline-none">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-gold/40 bg-white flex items-center justify-center shadow-sm shrink-0 group-hover:border-gold transition-colors">
+                    <!-- 嵌入上傳的 LOGO.jpg，並提供精緻 SVG 備援 -->
+                    <img 
+                        src="LOGO.jpg" 
+                        alt="曜森國際企業社 LOGO" 
+                        class="w-full h-full object-contain p-0.5"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="hidden w-full h-full items-center justify-center bg-white text-navy font-bold text-lg tracking-tighter">
+                        <span class="text-navy">Y</span><span class="text-gold">S</span>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg sm:text-xl font-bold text-navy tracking-wider leading-tight">曜森國際企業社</span>
+                    <span class="text-[11px] sm:text-xs font-medium text-gold tracking-[0.2em] uppercase mt-0.5">YAOSEN INTERNATIONAL</span>
+                </div>
+            </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero 主視覺與搜尋區塊 -->
+    <section class="relative bg-navy text-white overflow-hidden">
+        <!-- 背景幾何裝飾 -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full border-[24px] border-gold"></div>
+            <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full border-[16px] border-gold/60"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-gold/40 text-gold-light text-xs sm:text-sm font-medium tracking-wider mb-5">
+                <span class="w-2 h-2 rounded-full bg-gold"></span>
+                草本植萃原料供應
+            </div>
+            
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 leading-snug">
+                嚴選天然草本・<span class="text-gold">科學植萃原物料</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-sm sm:text-base text-gray-200 leading-relaxed mb-8 sm:mb-10">
+                珍稀菌菇與草本核心指標、產地特性及配方應用指南，品牌夥伴精準高品質天然原料。
+            </p>
+
+            <!-- 搜尋框容器 -->
+            <div class="max-w-2xl mx-auto">
+                <div class="relative flex items-center bg-white rounded-2xl shadow-lg border-2 border-transparent focus-within:border-gold transition-all p-1.5">
+                    <div class="pl-3.5 pr-2 text-gray-400">
+                        <svg class="w-5 h-5 text-navy/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="輸入原料名稱、別名、活性成分（如：三萜類、皂苷、金線蓮）..." 
+                        class="w-full py-2.5 px-2 text-sm sm:text-base text-navy placeholder-gray-400 bg-transparent focus:outline-none"
+                    >
+                    <button 
+                        id="clearSearchBtn" 
+                        onclick="clearSearch()" 
+                        class="hidden px-3 py-1.5 text-xs font-medium text-gray-500 hover:text-navy transition-colors cursor-pointer"
+                        title="清除搜尋"
+                    >
+                        清除
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 原料資料庫主內容區 -->
+    <main id="database" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        
+        <!-- 分類篩選與結果計數列 -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-gray-200">
+            <!-- 分類標籤按鈕 -->
+            <div class="flex flex-wrap items-center gap-2" id="categoryFilters">
+                <button onclick="setCategory('all')" data-cat="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-navy text-white shadow-sm">
+                    全部原料 (12)
+                </button>
+                <button onclick="setCategory('珍稀菌菇類')" data-cat="珍稀菌菇類" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-white text-navy border border-gray-200 hover:border-gold">
+                    珍稀菌菇類
+                </button>
+                <button onclick="setCategory('滋補草本類')" data-cat="滋補草本類" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-white text-navy border border-gray-200 hover:border-gold">
+                    滋補草本類
+                </button>
+                <button onclick="setCategory('清潤植萃類')" data-cat="清潤植萃類" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-white text-navy border border-gray-200 hover:border-gold">
+                    清潤植萃類
+                </button>
+                <button onclick="setCategory('晶亮果萃類')" data-cat="晶亮果萃類" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-white text-navy border border-gray-200 hover:border-gold">
+                    晶亮果萃類
+                </button>
+                <button onclick="setCategory('潔淨植萃類')" data-cat="潔淨植萃類" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-white text-navy border border-gray-200 hover:border-gold">
+                    潔淨植萃類
+                </button>
+            </div>
+
+            <!-- 筆數提示 -->
+            <div class="text-sm text-gray-500 flex items-center gap-1.5">
+                <span>顯示</span>
+                <span id="resultCount" class="font-bold text-navy">12</span>
+                <span>項原物料規格</span>
+            </div>
+        </div>
+
+        <!-- 原料卡片網格 (Grid) -->
+        <div id="ingredientsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- 卡片由 JavaScript 動態渲染 -->
+        </div>
+
+        <!-- 無搜尋結果提示畫面 -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-gray-200/80 shadow-sm">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold-bg flex items-center justify-center text-gold">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-1">找不到相符的原料資料</h3>
+            <p class="text-sm text-gray-500 mb-5">請嘗試更換其他關鍵字（例如：葉黃素、花青素、茄紅素、三萜類）或重設篩選條件。</p>
+            <button onclick="resetAllFilters()" class="px-5 py-2.5 bg-navy text-white text-sm font-medium rounded-xl hover:bg-navy-light transition-colors cursor-pointer">
+                顯示全部原料
+            </button>
+        </div>
+
+        <!-- 法規與科普聲明區塊 -->
+        <div class="mt-14 p-5 rounded-2xl bg-white border border-gray-200/90 text-xs text-gray-500 leading-relaxed flex items-start gap-3">
+            <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+                <strong class="text-navy font-semibold">專業原料資訊聲明：</strong>
+                本資料庫所載之草本、菌菇及植萃原料說明，係針對食品、保健食品及外用清潔/化粧品開發之原料特性、指標成分與一般應用進行客觀科普介紹，內容均符合台灣衛福部食藥署（TFDA）相關法規，不涉及任何醫療效能宣稱。實際產品配方設計與標示請依最新食品及化粧品管理規定辦理。
+            </div>
+        </div>
+    </main>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-navy text-gray-200 border-t border-gold/30 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-lg font-bold text-white tracking-wider">曜森國際企業社</span>
+                        <span class="text-xs text-gold tracking-widest uppercase">YAOSEN INTERNATIONAL</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300">專注於高品質天然草本萃取、台灣特色菌菇及機能性食品原料供應。</p>
+                </div>
+                <div class="flex flex-wrap gap-4 text-xs sm:text-sm">
+                    <div class="bg-white/5 px-4 py-2.5 rounded-xl border border-white/10">
+                        <span class="text-gold block text-xs mb-0.5">原物料規格洽詢</span>
+                        <span class="text-white font-medium">yaosen.kh@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-300">
+                <p>© 2026 曜森國際企業社 YAOSEN INTERNATIONAL. All Rights Reserved.</p>
+                <p>嚴選天然草本・科學植萃原料資料庫</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 原料詳細規格彈窗 (Detail Modal) -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-navy-dark/70 backdrop-blur-sm" onclick="closeModalOnBackdrop(event, 'detailModal')">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-gold/30 overflow-hidden modal-animate max-h-[90vh] flex flex-col">
+            <!-- 彈窗頂部標題列 -->
+            <div class="bg-navy px-6 py-5 flex items-start justify-between gap-4 border-b border-gold/30 shrink-0">
+                <div>
+                    <span id="modalCategory" class="inline-block px-2.5 py-0.5 rounded-md text-xs font-medium bg-gold/20 text-gold-light border border-gold/30 mb-2">
+                        分類標籤
+                    </span>
+                    <h2 id="modalTitle" class="text-xl sm:text-2xl font-bold text-white tracking-wide">原料名稱</h2>
+                    <p id="modalScientific" class="text-xs sm:text-sm text-gray-200 italic mt-0.5">Scientific Name</p>
+                </div>
+                <button onclick="closeDetailModal()" class="p-2 rounded-xl text-gray-200 hover:text-white hover:bg-white/10 transition-colors cursor-pointer" aria-label="關閉視窗">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 彈窗捲動內容區 -->
+            <div class="p-6 overflow-y-auto space-y-6 text-sm text-gray-700 leading-relaxed">
+                <!-- 別名與使用部位 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-ivory p-4 rounded-xl border border-gray-200/80">
+                    <div>
+                        <span class="text-xs font-semibold text-navy/60 block mb-1">常見別名</span>
+                        <p id="modalAlias" class="font-medium text-navy">-</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-navy/60 block mb-1">原料來源與部位</span>
+                        <p id="modalPart" class="font-medium text-navy">-</p>
+                    </div>
+                </div>
+
+                <!-- 核心活性成分 -->
+                <div>
+                    <h4 class="text-sm font-bold text-navy flex items-center gap-2 mb-2.5">
+                        <span class="w-1.5 h-4 bg-gold rounded-full"></span>
+                        核心活性與指標成分
+                    </h4>
+                    <div id="modalCompounds" class="flex flex-wrap gap-2">
+                        <!-- 成分標籤動態插入 -->
+                    </div>
+                </div>
+
+                <!-- 產地與特性說明 -->
+                <div>
+                    <h4 class="text-sm font-bold text-navy flex items-center gap-2 mb-2">
+                        <span class="w-1.5 h-4 bg-gold rounded-full"></span>
+                        原料特性與營養價值說明
+                    </h4>
+                    <p id="modalDescription" class="text-gray-600 leading-relaxed"></p>
+                </div>
+
+                <!-- 適用領域與保健方向 -->
+                <div>
+                    <h4 class="text-sm font-bold text-navy flex items-center gap-2 mb-2">
+                        <span class="w-1.5 h-4 bg-gold rounded-full"></span>
+                        常見應用領域與保健方向
+                    </h4>
+                    <ul id="modalApplications" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+                        <!-- 應用項目動態插入 -->
+                    </ul>
+                </div>
+
+                <!-- 配方與食用注意事項 -->
+                <div class="p-4 rounded-xl bg-amber-50/80 border border-amber-200/80">
+                    <h4 class="text-xs font-bold text-amber-900 flex items-center gap-1.5 mb-1">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        使用與法規注意事項
+                    </h4>
+                    <p id="modalCaution" class="text-xs text-amber-900/90 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- 彈窗底部操作列 -->
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between gap-3 shrink-0">
+                <button onclick="inquireIngredient()" class="px-4 py-2.5 bg-gold hover:bg-gold-dark text-white text-sm font-medium rounded-xl transition-colors shadow-sm cursor-pointer">
+                    洽詢此原料規格書 (COA / 報價)
+                </button>
+                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-white hover:bg-gray-100 text-navy border border-gray-300 text-sm font-medium rounded-xl transition-colors cursor-pointer">
+                    關閉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 原料資料庫與互動邏輯腳本 -->
+    <script>
+        // 12種核心原料完整資料庫（符合台灣食品及化粧品法規科普語氣）
+        const ingredientsData = [
+            {
+                id: 'antrodia',
+                name: '牛樟芝',
+                englishName: 'Antrodia cinnamomea',
+                alias: '牛樟菇、樟芝、紅樟芝',
+                category: '珍稀菌菇類',
+                part: '台灣特有珍稀真菌（子實體 / 菌絲體萃取）',
+                compounds: ['三萜類化合物 (Triterpenoids)', '多醣體 (Polysaccharides)', '超氧化物歧化酶 (SOD)', '腺苷'],
+                summary: '台灣特有珍稀真菌，富含三萜類化合物、多醣體與SOD，有助於調節生理機能、滋補強身與維持精神旺盛。',
+                description: '牛樟芝為台灣森林中特有的珍貴食藥用真菌，素有「台灣森林紅寶石」之稱。其含有豐富且結構獨特的三萜類化合物（Triterpenoids）、β-D-葡聚醣等多醣體及超氧化物歧化酶（SOD），是現代忙碌族群調整體質、應對高壓生活與滋補強身的頂級保健原料。',
+                applications: [
+                    '調節生理機能、日常滋補強身',
+                    '應酬熬夜族群之營養補給',
+                    '增強體力、維持精神旺盛',
+                    '膠囊、錠劑及機能飲品開發'
+                ],
+                caution: '嬰幼兒、孕婦、哺餵母乳者，如欲食用本產品，請洽詢醫師或醫療專業人員。原料使用需符合衛福部「牛樟芝食品管理及標示相關規定」。'
+            },
+            {
+                id: 'ganoderma',
+                name: '靈芝',
+                englishName: 'Ganoderma lucidum',
+                alias: '赤芝、瑞草、仙草',
+                category: '珍稀菌菇類',
+                part: '多孔菌科靈芝子實體或菌絲體',
+                compounds: ['靈芝多醣體', '靈芝三萜類', '腺苷 (Adenosine)', '有機鍺與微量元素'],
+                summary: '傳統珍貴草本菌菇，富含靈芝多醣體、三萜類及腺苷，支援健康維持、調整體質與增強體力。',
+                description: '靈芝在東方草本文化中享有崇高地位，現代科學研究證實其核心價值來自高活性高分子多醣體與三萜類成分。透過標準化萃取技術保留完整營養精華，能協助建立良好的保護力基礎，適合全年齡層作為日常健康維持與調整體質的漢方植萃。',
+                applications: [
+                    '調整體質、提升自然保護力',
+                    '病後補養與銀髮族健康維持',
+                    '增強體力、改善日常疲勞感',
+                    '複方草本膠囊、滴劑與養生茶包'
+                ],
+                caution: '靈芝菌絲體與子實體於產品標示上須依台灣食品法規明確區分標示；特殊體質者建議諮詢專業人員後食用。'
+            },
+            {
+                id: 'ginseng',
+                name: '西洋蔘',
+                englishName: 'Panax quinquefolius',
+                alias: '花旗參、粉光參、巴參',
+                category: '滋補草本類',
+                part: '五加科植物西洋蔘乾燥根部',
+                compounds: ['人蔘皂苷 (Ginsenosides Rb1, Re)', '西洋蔘多醣體', '多種必需胺基酸', '揮發油'],
+                summary: '又稱花旗參，富含人蔘皂苷、多醣體與胺基酸，性質溫潤不燥，有助於提振精神、生津止渴與增強體力。',
+                description: '西洋蔘原產於北美地區，與亞洲人蔘同屬五加科，但其皂苷組成比例獨特，性質較為清涼溫潤、補而不燥，四季皆宜。富含人蔘皂苷（特別是Rb1等成分）及多種胺基酸，能幫助長時間用腦或說話的族群提振精神、生津止渴並維持整日活力。',
+                applications: [
+                    '提振精神、增強體力與耐力',
+                    '生津止渴、潤喉舒緩乾燥感',
+                    '溫和補氣、適合四季日常調養',
+                    '即飲精華包、口含錠與元氣飲品'
+                ],
+                caution: '建議避免與濃茶或咖啡同時大量飲用，以免影響部分植化素吸收效率；孕婦及特殊疾病患者食用前請諮詢醫師。'
+            },
+            {
+                id: 'lycium-root',
+                name: '枸杞根 (地骨皮)',
+                englishName: 'Lycium chinense Root Bark',
+                alias: '地骨皮、杞根、地節',
+                category: '清潤植萃類',
+                part: '茄科植物枸杞之乾燥根皮',
+                compounds: ['甜菜鹼 (Betaine)', '地骨皮素 (Kukoamines)', '植物甾醇', '多種多酚類植化素'],
+                summary: '茄科植物枸杞的乾燥根皮，含甜菜鹼、地骨皮素與多種植化素，性質清潤，常用於退火、降火氣與調節生理機能。',
+                description: '枸杞全身皆具利用價值，其乾燥根皮稱為「地骨皮」，是傳統漢方中極具代表性的清潤草本。含有天然甜菜鹼（Betaine）、地骨皮素（Kukoamines）及多種植化素，性質甘淡清涼，能幫助現代外食族與熬夜族群退火、降火氣，維持體內清爽平衡。',
+                applications: [
+                    '退火、降火氣、舒緩燥熱不適',
+                    '調節生理機能、促進體內環保',
+                    '漢方草本茶飲與清潤複方基底',
+                    '搭配金線蓮、七葉膽等複方協同'
+                ],
+                caution: '本品性質偏清潤涼爽，體質極度虛寒者建議搭配溫和食材或酌量使用。'
+            },
+            {
+                id: 'anoectochilus',
+                name: '金線蓮',
+                englishName: 'Anoectochilus roxburghii',
+                alias: '金線蘭、樹草蓮、藥王',
+                category: '清潤植萃類',
+                part: '蘭科植物金線蓮全草',
+                compounds: ['金線蓮苷 (Kinsenoside)', '類黃酮 (Flavonoids)', '金線蓮多醣體', '牛磺酸與微量元素'],
+                summary: '素有「藥王」美譽的珍貴蘭科植物，富含金線蓮苷、類黃酮與多醣體，有助於清涼退火、促進新陳代謝與健康維持。',
+                description: '金線蓮為台灣與東南亞地區極具代表性的珍貴蘭科草本，葉面帶有金色網狀脈紋，在民間素有「藥王」與「金草」之美譽。其核心指標成分「金線蓮苷（Kinsenoside）」搭配高含量類黃酮與多醣體，能幫助清涼退火、促進新陳代謝，是頂級養生飲品與保健食品的熱門原料。',
+                applications: [
+                    '清涼退火、降火氣、生津止渴',
+                    '促進新陳代謝、調節生理機能',
+                    '熬夜、高壓族群之日常健康維持',
+                    '草本養生茶飲、濃縮萃取液與膠囊'
+                ],
+                caution: '選購時應確保來源為合法組織培養或專業契作之基原品種（Anoectochilus roxburghii / formosanus），並確認無農藥與重金屬殘留。'
+            },
+            {
+                id: 'gynostemma',
+                name: '七葉膽 (絞股藍)',
+                englishName: 'Gynostemma pentaphyllum',
+                alias: '絞股藍、五葉參、南方人蔘',
+                category: '清潤植萃類',
+                part: '葫蘆科草本植物乾燥全草或葉部',
+                compounds: ['絞股藍皂苷 (Gypenosides)', '黃酮類化合物', '多醣體', '多種維生素與礦物質'],
+                summary: '葫蘆科草本植物，富含絞股藍皂苷（結構與人蔘皂苷相似）及黃酮類，有助於促進新陳代謝、調節生理機能與降火氣。',
+                description: '七葉膽（學名絞股藍）雖非五加科植物，卻蘊含超過80種「絞股藍皂苷（Gypenosides）」，其中多種皂苷的化學結構與人蔘皂苷高度相似，因此被譽為「南方人蔘」。其性質甘苦微涼，兼顧補養與清潤特性，適合飲食油膩、缺乏運動的現代人促進新陳代謝。',
+                applications: [
+                    '促進新陳代謝、維持輕盈順暢',
+                    '調節生理機能、降火氣',
+                    '外食族、應酬族之日常草本保養',
+                    '機能茶包、濃縮萃取錠劑與飲品'
+                ],
+                caution: '性質偏微涼，空腹時不建議過量濃飲；孕婦及哺乳期婦女食用前請先諮詢專業醫師。'
+            },
+            {
+                id: 'licorice',
+                name: '甘草',
+                englishName: 'Glycyrrhiza uralensis',
+                alias: '國老、甜草、美草',
+                category: '滋補草本類',
+                part: '豆科植物甘草之乾燥根及根莖',
+                compounds: ['甘草酸 (Glycyrrhizin)', '甘草次酸', '甘草黃酮 (Liquiritin)', '甘草多醣'],
+                summary: '豆科植物根及根莖，含甘草酸、甘草黃酮，常用於調和配方風味、潤喉生津與使口氣芬芳。',
+                description: '甘草是漢方草本中最具親和力的「調和之王」，其根部富含天然甜味成分甘草酸（甜度約為蔗糖的數十倍，卻幾乎不含熱量）以及多種甘草黃酮。在保健食品與草本飲品配方中，不僅能圓潤整體風味、降低其他植萃的苦澀感，更能提供潤喉生津、使口氣芬芳的極佳體驗。',
+                applications: [
+                    '潤喉生津、保護喉嚨與使口氣芬芳',
+                    '調和草本複方口感、提升適口性',
+                    '幫助維持消化道機能',
+                    '潤喉糖、草本茶飲、粉末包與口含錠'
+                ],
+                caution: '含有天然甘草酸，配方設計時應留意每日總攝取量；高血壓或特殊體質者應遵循專業建議適量攝取。'
+            },
+            {
+                id: 'cassia',
+                name: '決明子',
+                englishName: 'Cassia obtusifolia',
+                alias: '草決明、馬蹄決明、還瞳子',
+                category: '清潤植萃類',
+                part: '豆科植物決明之乾燥成熟種子',
+                compounds: ['大黃酚 (Chrysophanol)', '大黃素甲醚', '決明素 (Obtusin)', '天然膳食纖維與多醣'],
+                summary: '豆科植物成熟種子，富含大黃酚、大黃素甲醚、決明素及膳食纖維，有助於使排便順暢、晶亮有神與促進新陳代謝。',
+                description: '決明子自古即為東方家庭常備的養生穀物草本，經適度烘焙後散發類咖啡的溫潤香氣且不含咖啡因。種子富含決明素、大黃酚及豐富水溶性膳食纖維，既能溫和促進腸道蠕動、使排便順暢，也是現代 3C 族群維持晶亮有神、降火氣的理想天然原料。',
+                applications: [
+                    '促進腸道蠕動、使排便順暢',
+                    '3C 族群之晶亮有神保養',
+                    '促進新陳代謝、餐後解膩茶飲',
+                    '無咖啡因養生茶包、順暢酵素複方'
+                ],
+                caution: '台灣食藥署規定，決明子作為食品原料使用時，應經「炒熟」等適當加工處理，且每日食用限量須符合相關法規規範。'
+            },
+            {
+                id: 'gac-fruit',
+                name: '木鱉果',
+                englishName: 'Momordica cochinchinensis',
+                alias: '天堂果、夫妻果、木虌子',
+                category: '晶亮果萃類',
+                part: '葫蘆科植物木鱉果之成熟假種皮與果肉萃取',
+                compounds: ['天然茄紅素 (Lycopene)', 'β-胡蘿蔔素 (β-Carotene)', '玉米黃素與葉黃素', '必需脂肪酸 (Omega-3/6/9)'],
+                summary: '譽為「來自天堂的水果」，假種皮富含高濃度天然茄紅素與 β-胡蘿蔔素，並自帶天然油脂提升脂溶性營養吸收率。',
+                description: '木鱉果為原生於台灣與東南亞的珍貴葫蘆科果實，其鮮紅色的假種皮（種子外膜）蘊含極高濃度的天然茄紅素與 β-胡蘿蔔素，且天然含有不飽和脂肪酸，形成絕佳的天然油相載體，使脂溶性類胡蘿蔔素無需額外複雜乳化即具備優異的生物利用率，是晶亮保養與青春美麗的頂級果萃。',
+                applications: [
+                    '3C 數位族群之晶亮有神補給',
+                    '養顏美容、維持青春美麗光采',
+                    '高生物利用率之天然類胡蘿蔔素來源',
+                    '軟膠囊、葉黃素複方飲品與果凍條'
+                ],
+                caution: '木鱉果僅「假種皮」與成熟果肉可供食品原料加工使用，其種子與外皮含有微量皂苷與生物鹼，加工製程須嚴格去除種子確保食用安全。'
+            },
+            {
+                id: 'marigold',
+                name: '金盞花',
+                englishName: 'Tagetes erecta L.',
+                alias: '萬壽菊、金盞菊、臭芙蓉',
+                category: '晶亮果萃類',
+                part: '菊科植物萬壽菊之乾燥花瓣標準化萃取',
+                compounds: ['游離型葉黃素 (Free Lutein)', '酯化型葉黃素 (Lutein Esters)', '玉米黃素 (Zeaxanthin)', '消旋玉米黃素'],
+                summary: '國際公認葉黃素與玉米黃素的核心天然來源，支援 5:1 黃金比例配方設計，協助維持晶亮舒適與健康維持。',
+                description: '金盞花（萬壽菊）花瓣富含高純度天然類胡蘿蔔素，是全球晶亮保健領域最經典且具充分科學文獻支持的植物來源。透過專利皂化與純化技術，可提供分子量小、可直接吸收的「游離型葉黃素」或穩定性高的「酯化型葉黃素」，並精準調配葉黃素與玉米黃素 5:1 黃金比例。',
+                applications: [
+                    '長時間閱讀與使用 3C 螢幕之晶亮保養',
+                    '葉黃素與玉米黃素 5:1 黃金比例核心原料',
+                    '銀髮族與學齡兒童日常營養補給',
+                    '素食膠囊、晶亮飲品、葉黃素軟糖與粉末包'
+                ],
+                caution: '依據台灣衛福部食藥署《食品原料金盞花萃取物之使用限制及標示規定》，食品中葉黃素（Lutein）每日最高食用限量為 30 mg。'
+            },
+            {
+                id: 'bilberry',
+                name: '山桑子',
+                englishName: 'Vaccinium myrtillus',
+                alias: '歐洲藍莓、越橘、黑果越橘',
+                category: '晶亮果萃類',
+                part: '杜鵑花科植物歐洲越橘成熟果實萃取',
+                compounds: ['標準化花青素 (Anthocyanins ≥ 25%~36%)', '飛燕草素 (Delphinidin)', '矢車菊素 (Cyanidin)', '原花青素與多酚'],
+                summary: '嚴選北歐野生越橘果實，富含超過 15 種天然花青素（HPLC 標準化定量），與葉黃素協同打造日夜全方位晶亮防護。',
+                description: '山桑子生長於北歐高緯度冷涼森林，果實果肉呈深紫紅色，其花青素（Anthocyanins）含量遠高於一般栽培藍莓，並包含飛燕草素、矢車菊素等 15 種以上完整花青素譜系。在水溶性環境中具備極佳的舒緩與保護力，常與脂溶性的金盞花葉黃素搭配，形成水油雙效的晶亮保養方案。',
+                applications: [
+                    '水溶性花青素補給，與葉黃素形成雙效協同',
+                    '夜間駕駛、長時間專注工作族群保養',
+                    '提升抗氧化力、維持健康與活力',
+                    '晶亮複方膠囊、莓果風味飲品與口含錠'
+                ],
+                caution: '選購時建議確認 HPLC 檢測之總花青素含量（如 25% 或 36% 標準化規格），並區分歐洲野生山桑子（Vaccinium myrtillus）與一般北美藍莓。'
+            },
+            {
+                id: 'soapberry',
+                name: '無患子',
+                englishName: 'Sapindus mukorossi Gaertn.',
+                alias: '肥皂果、油患子、菩提子、洗手果',
+                category: '潔淨植萃類',
+                part: '無患子科植物無患子之成熟果皮（假種皮）萃取',
+                compounds: ['無患子總皂苷 (Sapindus Saponins / Mukurosides)', '常春藤皂苷元 (Hederagenin)', '齊墩果酸 (Oleanolic Acid)', '天然果酸與多醣體'],
+                summary: '天然非離子型植物界面活性劑，富含高純度無患子三萜類皂苷，泡沫細緻綿密、生物分解度高且性質溫和不刺激。',
+                description: '嚴選成熟無患子果皮（假種皮）經低溫水萃與純化濃縮製得，富含天然非離子型植物界面活性劑（三萜類皂苷如 Mukurosides），泡沫細緻綿密、生物分解度高且性質溫和不刺激，能有效帶走多餘油脂與髒污同時維持肌膚水潤平衡，為綠色永續洗沐與個人清潔保養首選植萃。',
+                applications: [
+                    '天然植萃洗髮精、控油頭皮養護與沐浴露',
+                    '溫和胺基酸潔顏慕斯與卸妝清潔產品',
+                    '口腔清潔護理產品與洗手慕斯',
+                    '環保家事清潔劑及妝品級天然乳化起泡原料'
+                ],
+                caution: '依據台灣衛福部食藥署《化粧品成分使用限制表》及原料規範，無患子果皮萃取物主要供作外用清潔及化粧品用途（界面活性劑/肌膚調理劑），不作為一般食品原料食用；外用產品應避免直接接觸眼睛。'
+            }
+        ];
+
+        // 狀態管理變數與 DOM 參考
+        let currentCategory = 'all';
+        let currentSearch = '';
+        let selectedIngredient = null;
+        let lastSubmittedSummary = '';
+
+        const gridEl = document.getElementById('ingredientsGrid');
+        const emptyStateEl = document.getElementById('emptyState');
+        const resultCountEl = document.getElementById('resultCount');
+        const searchInputEl = document.getElementById('searchInput');
+        const clearSearchBtnEl = document.getElementById('clearSearchBtn');
+
+        // 初始化頁面渲染與事件監聽
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards();
+
+            // 搜尋框即時輸入監聽
+            searchInputEl.addEventListener('input', (e) => {
+                currentSearch = e.target.value.trim().toLowerCase();
+                if (currentSearch.length > 0) {
+                    clearSearchBtnEl.classList.remove('hidden');
+                } else {
+                    clearSearchBtnEl.classList.add('hidden');
+                }
+                renderCards();
+            });
+
+            // 支援 ESC 鍵關閉彈窗
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeDetailModal();
+                }
+            });
+        });
+
+        // 設定分類篩選
+        function setCategory(category) {
+            currentCategory = category;
+            
+            // 更新按鈕樣式
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.className = 'filter-btn active px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-navy text-white shadow-sm';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer bg-white text-navy border border-gray-200 hover:border-gold';
+                }
+            });
+
+            renderCards();
+        }
+
+        // 清除搜尋框
+        function clearSearch() {
+            searchInputEl.value = '';
+            currentSearch = '';
+            clearSearchBtnEl.classList.add('hidden');
+            renderCards();
+            searchInputEl.focus();
+        }
+
+        // 重設所有篩選
+        function resetAllFilters() {
+            clearSearch();
+            setCategory('all');
+        }
+
+        // 渲染原料卡片網格
+        function renderCards() {
+            const filtered = ingredientsData.filter(item => {
+                const matchCategory = currentCategory === 'all' || item.category === currentCategory;
+                
+                if (!matchCategory) return false;
+                if (!currentSearch) return true;
+
+                // 搜尋比對欄位：名稱、英文學名、別名、活性成分、摘要、應用
+                const searchableText = [
+                    item.name,
+                    item.englishName,
+                    item.alias,
+                    item.category,
+                    item.summary,
+                    ...item.compounds,
+                    ...item.applications
+                ].join(' ').toLowerCase();
+
+                return searchableText.includes(currentSearch);
+            });
+
+            resultCountEl.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                gridEl.innerHTML = '';
+                gridEl.classList.add('hidden');
+                emptyStateEl.classList.remove('hidden');
+                return;
+            }
+
+            emptyStateEl.classList.add('hidden');
+            gridEl.classList.remove('hidden');
+
+            gridEl.innerHTML = filtered.map(item => `
+                <article 
+                    onclick="openDetailModal('${item.id}')" 
+                    class="card-hover bg-white rounded-2xl border border-gray-200/90 p-6 flex flex-col justify-between cursor-pointer group relative overflow-hidden"
+                >
+                    <!-- 頂部草綠與金色細線裝飾 -->
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-navy via-gold to-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <div>
+                        <!-- 分類與箭頭 -->
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-gold-bg text-gold-dark border border-gold/25">
+                                ${item.category}
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-ivory group-hover:bg-navy group-hover:text-white text-navy/60 flex items-center justify-center transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- 原料名稱與學名 -->
+                        <h3 class="text-xl font-bold text-navy group-hover:text-gold-dark transition-colors mb-1">
+                            ${item.name}
+                        </h3>
+                        <p class="text-xs text-gray-400 italic mb-3 font-medium">
+                            ${item.englishName}
+                        </p>
+
+                        <!-- 簡短摘要 -->
+                        <p class="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-4">
+                            ${item.summary}
+                        </p>
+                    </div>
+
+                    <!-- 底部核心成分標籤 -->
+                    <div class="pt-4 border-t border-gray-100">
+                        <span class="text-[11px] font-semibold text-gray-400 block mb-2">核心指標成分</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${item.compounds.slice(0, 2).map(comp => `
+                                <span class="px-2 py-0.5 bg-navy/5 text-navy text-xs rounded-md font-medium">
+                                    ${comp.split(' (')[0]}
+                                </span>
+                            `).join('')}
+                            ${item.compounds.length > 2 ? `<span class="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs rounded-md">+${item.compounds.length - 2}</span>` : ''}
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // 開啟原料詳細規格彈窗
+        function openDetailModal(id) {
+            const item = ingredientsData.find(i => i.id === id);
+            if (!item) return;
+
+            selectedIngredient = item;
+
+            document.getElementById('modalCategory').textContent = item.category;
+            document.getElementById('modalTitle').textContent = item.name;
+            document.getElementById('modalScientific').textContent = item.englishName;
+            document.getElementById('modalAlias').textContent = item.alias;
+            document.getElementById('modalPart').textContent = item.part;
+            document.getElementById('modalDescription').textContent = item.description;
+            document.getElementById('modalCaution').textContent = item.caution;
+
+            // 渲染活性成分標籤
+            document.getElementById('modalCompounds').innerHTML = item.compounds.map(comp => `
+                <span class="px-3 py-1 rounded-lg bg-gold-bg text-navy border border-gold/30 text-xs font-semibold">
+                    ${comp}
+                </span>
+            `).join('');
+
+            // 渲染應用方向列表
+            document.getElementById('modalApplications').innerHTML = item.applications.map(app => `
+                <li class="flex items-start gap-2 bg-ivory px-3 py-2 rounded-lg border border-gray-200/60 text-xs sm:text-sm">
+                    <svg class="w-4 h-4 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>${app}</span>
+                </li>
+            `).join('');
+
+            const modal = document.getElementById('detailModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 關閉原料詳細規格彈窗
+        function closeDetailModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // 從詳細彈窗點擊「洽詢此原料規格書」：關閉彈窗、捲動至底部表單並自動帶入原料名稱
+        function inquireIngredient() {
+            const ingredientText = selectedIngredient 
+                ? `${selectedIngredient.name} (${selectedIngredient.englishName}) - 索取 COA 規格書與報價` 
+                : '';
+            
+            closeDetailModal();
+
+            const targetInput = document.getElementById('targetIngredient');
+            const inquirySection = document.getElementById('inquiry-section');
+            
+            if (targetInput && ingredientText) {
+                targetInput.value = ingredientText;
+            }
+            
+            if (inquirySection) {
+                inquirySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => {
+                    document.getElementById('companyName')?.focus();
+                }, 600);
+            }
+        }
+
+        // 點擊背景遮罩關閉彈窗
+        function closeModalOnBackdrop(event, modalId) {
+            if (event.target.id === modalId && modalId === 'detailModal') {
+                closeDetailModal();
+            }
+        }
+
+        // 處理底部企業諮詢表單送出
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const company = document.getElementById('companyName').value.trim();
+            const person = document.getElementById('contactPerson').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const ingredient = document.getElementById('targetIngredient').value.trim();
+            const notes = document.getElementById('inquiryNotes').value.trim();
+
+            lastSubmittedSummary = [
+                `【曜森國際企業社｜原料規格與報價諮詢單】`,
+                `公司名稱：${company}`,
+                `聯絡人：${person}`,
+                `電子信箱：${email}`,
+                phone ? `聯絡電話：${phone}` : null,
+                `洽詢原料：${ingredient}`,
+                notes ? `需求說明：${notes}` : null
+            ].filter(Boolean).join('\n');
+
+            const banner = document.getElementById('formSuccessBanner');
+            const bannerText = document.getElementById('formSuccessText');
+            bannerText.textContent = `感謝 ${company}（${person}）的洽詢，我們已記錄您對「${ingredient}」的規格書與報價需求，專員將盡快與您聯繫（yaosen.kh@gmail.com）。`;
+            banner.classList.remove('hidden');
+        }
+
+        // 複製表單諮詢摘要（相容 iframe 環境）
+        function copyFormSummary() {
+            if (!lastSubmittedSummary) return;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = lastSubmittedSummary;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const bannerText = document.getElementById('formSuccessText');
+            bannerText.textContent = '已將完整諮詢單內容複製至剪貼簿，您可直接貼上並寄送至 yaosen.kh@gmail.com！';
+        }
+    </script>
+</body>
+</html>
